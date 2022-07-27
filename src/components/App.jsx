@@ -12,7 +12,7 @@ const App = () => {
   const [filter, setFilter] = useState('');
 
   useEffect(() => {
-    console.log( 'dadsfd',localStorage.setItem('contacts', JSON.stringify(contacts)));
+    localStorage.setItem('contacts', JSON.stringify(contacts));
   }, [contacts]);
 
 
