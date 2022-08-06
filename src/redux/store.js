@@ -3,9 +3,12 @@ import { configureStore, createReducer, createAction } from '@reduxjs/toolkit';
 const addContact = createAction('clicks/addContact');
 
 console.log(addContact.toString());
-const clickAddContact = createReducer(0, {
+
+const clickAddContact = createReducer({ contacts: '' }, {
     [addContact]: (state, action) => {
-        return state;
+        return {
+            contacts:state.contacts + action.contacts, 
+        };
     }
 })
 
