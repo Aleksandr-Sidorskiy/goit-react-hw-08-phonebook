@@ -1,46 +1,16 @@
 import { configureStore, createReducer, createAction } from '@reduxjs/toolkit';
 
-const addContact = createAction('clicks/addContact');
+export const addContact = createAction('contact/addContact');
+export const deleteContact = createAction('contact/deleteContact')
 
-console.log(addContact.toString());
-
-const clickAddContact = createReducer({ contacts: '' }, {
-    [addContact]: (state, action) => {
-        return {
-            contacts:state.contacts + action.contacts, 
-        };
-    }
-})
+const clickAddContact = createReducer([], {
+    [addContact]: (state, action) => state.push(action.payload),
+    [deleteContact]: (state, action )=> state.filter(item => item.id !== action.payload),
+});
 
 export const store =  configureStore({
     reducer: {
-      clicks: clickAddContact,
+      contact: clickAddContact,
   },
 })
-// const addContact = ({ name, number }) => {
-//     const newContact = { id: nanoid(), name, number };
 
-//     contacts.some(contact => contact.name.toLowerCase() === name.toLowerCase())
-//       ? Report.warning(
-//           `${name}`,
-//           'This user is already in the contact list.',
-//           'OK'
-//         )
-//       : setContacts(prevContacts => [newContact, ...prevContacts]);
-//   };
-
-//   const deleteContact = contactId => {
-//     setContacts(prevContacts => prevContacts.filter(contact => contact.id !== contactId)
-//     );
-//   };
-
-//   const changeFilter = e => {
-//     setFilter(e.currentTarget.value);
-//   };
-
-//    const filtredContacts = () => {
-//     const normalizedFilter = filter.toLowerCase();
-//     return contacts.filter(({ name }) =>
-//       name.toLowerCase().includes(normalizedFilter)
-//     );
-//   };

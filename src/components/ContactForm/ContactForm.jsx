@@ -1,9 +1,12 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 import css from './ContactForm.module.css';
+import { useDispatch } from 'react-redux';
+import { addContact } from 'redux/store';
 
 
-const ContactForm = ({onSubmit}) => {
+const ContactForm = ({ onSubmit }) => {
+  const dispatch = useDispatch();
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
   
@@ -56,9 +59,10 @@ const ContactForm = ({onSubmit}) => {
             required
           />
         </label>
-        <button className={css.button} type="submit">
+        <button className={css.button} onClick={() => dispatch(addContact())}>addContact</button>
+        {/* <button className={css.button} type="submit">
           Add contact
-        </button>
+        </button> */}
       </form>
     );
   
