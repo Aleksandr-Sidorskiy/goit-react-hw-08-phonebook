@@ -1,5 +1,5 @@
-import { configureStore, createReducer, createAction } from '@reduxjs/toolkit';
-import contactSlice from './contactsSlice';
+import { configureStore } from '@reduxjs/toolkit';
+// import contactSlice from './contactsSlice';
 import filter from './filter';
 
 // export const addContact = createAction('contact/addContact');
