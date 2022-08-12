@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-// import contactSlice from './contactsSlice';
+import contactSlice from './contactsSlice';
 import filter from './filter';
 
 // export const addContact = createAction('contact/addContact');
@@ -12,7 +12,7 @@ import filter from './filter';
 
 export const store =  configureStore({
     reducer: {
-    // contactSlice,
+    contactSlice,
       filter,
   },
 })

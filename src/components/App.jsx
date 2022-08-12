@@ -6,17 +6,25 @@ import ContactList from './ContactList';
 import Filter from './Filter';
 import Message from './Message';
 import css from './App.module.css';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { setFilter } from '../redux/filter';
 
 const App = () => {
   const [contacts, setContacts] = useState(JSON.parse(window.localStorage.getItem('contacts')) ?? '');
   // const [filter, setFilter] = useState('');
-  const value = useSelector(state => state.filter.value);
-  
 
   useEffect(() => {
     localStorage.setItem('contacts', JSON.stringify(contacts));
   }, [contacts]);
+
+  const value = useSelector(state => state.filter.value);
+
+  const dispatch = useDispatch();
+
+  const changeFilter = e => {
+    dispatch(setFilter(e.currentTarget.value));
+  };
+  
 
 
   const addContact = ({ name, number }) => {
@@ -57,7 +65,7 @@ const App = () => {
         <h2 className={css.subtitle}>Contacts</h2>
         <Filter
           filter={value}
-          // changeFilter={changeFilter} 
+          changeFilter={changeFilter} 
           
           />
         
