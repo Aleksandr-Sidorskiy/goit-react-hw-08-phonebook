@@ -1,20 +1,20 @@
 import PropTypes from 'prop-types';
 import css from './Filter.module.css';
-// import { setFilter } from '../../redux/filter';
-// import { useDispatch, useSelector } from "react-redux";
+import { setFilter, getFilter } from 'redux/filter';
+import { useDispatch, useSelector } from "react-redux";
  
+function Filter() {
+  
+  const value = useSelector(getFilter);
+  console.log(value);
 
+  const dispatch = useDispatch();
 
-function Filter({changeFilter, value}) {
-  // const value = useSelector(state => state.filter.value);
-  // console.log(value);
+  const changeFilter = e => {
+    dispatch(setFilter(e.currentTarget.value));
+  };
 
-  // const dispatch = useDispatch();
-
-  // const changeFilter = e => {
-  //   dispatch(setFilter(e.currentTarget.value));
-  // };
-
+  
   
   return (
     <label className={css.label}>
@@ -29,7 +29,7 @@ function Filter({changeFilter, value}) {
   );
 }
 
-Filter.prototype = {
+Filter.protType = {
   filter: PropTypes.string.isRequired,
   changeFilter: PropTypes.func.isRequired,
 };
