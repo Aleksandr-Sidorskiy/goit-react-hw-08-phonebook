@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+
 import { useState } from 'react';
 import css from './ContactForm.module.css';
 import { nanoid } from 'nanoid';
@@ -33,10 +33,7 @@ const ContactForm = () => {
               'OK'
               )
               : dispatch(addContacts(newContact));
-              
-  
-              reset();
-              
+              reset(); 
             };
             
             const reset = () => {
@@ -80,14 +77,6 @@ const ContactForm = () => {
     
   }
   
-ContactForm.propTypes = {
-    newContact:PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-      number: PropTypes.string.isRequired,
-    })
-  ),
-  }
+
   
   export default ContactForm;

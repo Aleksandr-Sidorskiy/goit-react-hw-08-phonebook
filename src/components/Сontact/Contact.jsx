@@ -1,8 +1,14 @@
 import PropTypes from 'prop-types';
 import { FaTrash, FaUserAlt } from 'react-icons/fa';
 import css from './Contact.module.css';
+import { deleteContact } from 'redux/contactsSlice'; 
+import { useDispatch } from 'react-redux';
 
-function Contact({ name, number, deleteContact, contactId }) {
+
+function Contact({ name, number, contactId }) {
+  const dispatch = useDispatch();
+  const deleteContacts = contactId => dispatch(deleteContact(contactId));
+
   return (
     <>
       <div className={css.wrapper}>
@@ -16,7 +22,7 @@ function Contact({ name, number, deleteContact, contactId }) {
         <button
           className={css.button}
           type="button"
-          onClick={() => deleteContact(contactId)}
+          onClick={() => deleteContacts(contactId)}
         >
           <FaTrash />
         </button>
@@ -25,10 +31,9 @@ function Contact({ name, number, deleteContact, contactId }) {
   );
 }
 
-Contact.prototype = {
+Contact.propTypes = {
   name: PropTypes.string.isRequired,
   number: PropTypes.string.isRequired,
-  onDeleteContact: PropTypes.func.isRequired,
   contactId: PropTypes.string.isRequired,
 };
 

@@ -9,7 +9,7 @@ function Message({ text }) {
   );
 }
 
-Message.prototype = {
+Message.propTypes = {
   text: PropTypes.string.isRequired,
 };
 

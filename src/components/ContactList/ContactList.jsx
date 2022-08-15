@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
 import Contact from '../Сontact';
 import css from './ContactList.module.css';
-import { deleteContact, getContacts } from 'redux/contactsSlice';
+import { deleteContact, getContacts, getFilter } from 'redux/contactsSlice';
 import { useSelector, useDispatch } from 'react-redux';
-import { getFilter } from 'redux/filter';
+
 
 
 function ContactList() {
@@ -22,6 +22,7 @@ function ContactList() {
   };
 
   const filteredContactList = filtredContacts();
+
   
   return (
     <ul>
@@ -41,14 +42,14 @@ function ContactList() {
   );
 }
 
-ContactList.protType = {
+ContactList.propTypes = {
   filteredContactList: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
       number: PropTypes.string.isRequired,
     })
-  ).isRequired,
+  ),
 };
 
 export default ContactList;
