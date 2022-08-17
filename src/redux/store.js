@@ -11,19 +11,24 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
+// ++++++++++++++++++++pokemon+++++++++++++++++++++++
+import { pokemonApi } from './pokemonSlice';
 
 
 export const store = configureStore({
   reducer: {
-    contacts: persisteContactReducer
+    contacts: persisteContactReducer,
+    [pokemonApi.reducerPath]: pokemonApi.reducer,
   },
-  middleware(getDefaultMiddleware) {
-    return getDefaultMiddleware({
+  middleware:(getDefaultMiddleware) => [
+   ...getDefaultMiddleware(
+     {
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    });
-  },
+     }
+   ),pokemonApi.middleware,
+   ]
 });
 
 export const persistor = persistStore(store);
