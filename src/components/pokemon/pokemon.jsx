@@ -1,14 +1,15 @@
 import { useGetPokemonByNameQuery } from "redux/pokemonSlice";
 import { useState } from "react";
+import Loader from "components/Loader/Loader";
 
 export const Pokemon = () => {
     const [pokemonName, setPokemonName] = useState('');    
-    const { data,  } = useGetPokemonByNameQuery(pokemonName, {
+    const { data, error, isFetching, isError } = useGetPokemonByNameQuery(pokemonName, {
         skip: pokemonName === '',
-        // error, isFetching,
+        // 
     });
-    const normalizedPokemon = pokemonName.toLowerCase().value;
-    console.log('pokemonName', normalizedPokemon);
+    // const normalizedPokemon = pokemonName.toLowerCase().value;
+    console.log('pokemonName', pokemonName);
     // console.log('data', data);
     // console.log('isFetching', isFetching)
     
@@ -24,9 +25,10 @@ export const Pokemon = () => {
             <input type="text" name="pokemonName" />
             <button type = "submit">Search</button>
         </form>
-
+            {isFetching && <Loader />}
         <div>
-            {data && <h2>{data.name }</h2>}
+            {isError && <p>Failed!!!{ error.data}</p>}
+            {data && !isFetching && !isError && <h2>{data.name }</h2>}
         </div>
     </>
 }
