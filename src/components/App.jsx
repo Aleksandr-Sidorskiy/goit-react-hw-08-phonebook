@@ -4,15 +4,18 @@ import ContactList from './ContactList';
 import Filter from './Filter';
 import Message from './Message';
 import css from './App.module.css';
-import { useSelector } from 'react-redux';
-import { getContacts } from 'redux/contactsSlice';
+// import { useSelector } from 'react-redux';
+// import { getContacts } from 'redux/contactsSlice';
 import { Pokemon } from './pokemon/pokemon';
+import { useFechContactQuery } from 'redux/contactApi';
+import { ContList } from './ContactList/ContactList';
 
 const App = () => {
- 
-const contacts = useSelector(getContacts);
-    return (
-      <div className={css.container}>
+
+  const { data: contacts, isFetching } = useFechContactQuery();
+// const contacts = useSelector(getContacts);
+  return (
+    <div className={css.container}>
         <h1>POKEMON</h1>
         <Pokemon/>
 
@@ -25,11 +28,13 @@ const contacts = useSelector(getContacts);
         <Filter />
         
         {contacts.length > 0 ? 
-          <ContactList/>
+          <ContactList />
         : (
           <Message text="Contact list is empty." />
           )}
         
+    {isFetching}
+        {contacts && <ContList cont={contacts} />}
 
         
       </div>

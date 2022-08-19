@@ -7,7 +7,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 
 function ContactList() {
-  
+
   const filter= useSelector(getFilter);
   const contacts = useSelector(getContacts);
 
@@ -42,7 +42,15 @@ function ContactList() {
     </ul>
   );
 }
-
+export const ContList = ({ cont }) => {
+  return (
+    <ul>
+      {cont.map(con => (
+        <li key={con.id}>{ cont.content}</li>
+      ))}
+    </ul>
+  )
+}
 
 
 export default ContactList;
