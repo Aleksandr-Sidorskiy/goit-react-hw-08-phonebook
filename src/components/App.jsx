@@ -1,18 +1,22 @@
 
 import ContactForm from './ContactForm';
-import ContactList from './ContactList';
+// import ContactList from './ContactList/ContactList';
 import Filter from './Filter';
-import Message from './Message';
+// import Message from './Message';
 import css from './App.module.css';
 // import { useSelector } from 'react-redux';
 // import { getContacts } from 'redux/contactsSlice';
 import { Pokemon } from './pokemon/pokemon';
-import { useFechContactQuery } from 'redux/contactApi';
-import { ContList } from './ContactList/ContactList';
+import { useFechContactQuery,  useDeleteContactMutation } from 'redux/contactApi';
+import Loader from './Loader';
+import { ContactsApiList } from './ContactList/ContactList';
+
 
 const App = () => {
 
   const { data: contacts, isFetching } = useFechContactQuery();
+  console.log({data:contacts})
+  const [deleteContact] = useDeleteContactMutation();
 // const contacts = useSelector(getContacts);
   return (
     <div className={css.container}>
@@ -25,16 +29,17 @@ const App = () => {
         <ContactForm  />
 
         <h2 className={css.subtitle}>Contacts</h2>
-        <Filter />
         
-        {contacts.length > 0 ? 
-          <ContactList />
-        : (
-          <Message text="Contact list is empty." />
-          )}
+      <Filter />
         
-    {isFetching}
-        {contacts && <ContList cont={contacts} />}
+        {/* {contacts.length > 0 ?  */}
+          {/* <ContactList /> */}
+        
+          {/* <Message text="Contact list is empty." /> */}
+          {/* )} */}
+        
+        {isFetching && <Loader />}
+      {contacts && <ContactsApiList contacts={contacts} onDelete={ deleteContact} />}
 
         
       </div>

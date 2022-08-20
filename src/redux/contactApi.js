@@ -7,8 +7,25 @@ export const contactApi = createApi({
         fechContact: builder.query({
             query: () => `/contacts`,
         }),
+        
+        createContact: builder.mutation({
+            query: newContacts => ({
+                
+                url: '/contacts',
+                method: 'POST',
+                body: newContacts,
+            }),
+        }),
+
+        deleteContact: builder.mutation({
+            query: contactId => ({
+                url: `/contacts${contactId}`,
+                method: 'DELETE',
+            }),
+        }),
+    
     }),
 });
 // console.log(query)
 
-export const { useFechContactQuery } = contactApi;
+export const { useFechContactQuery, useDeleteContactMutation, useCreateContactMutation } = contactApi;

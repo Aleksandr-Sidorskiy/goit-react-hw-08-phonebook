@@ -5,7 +5,17 @@ import { deleteContact, getContacts, getFilter } from 'redux/contactsSlice';
 import { useSelector, useDispatch } from 'react-redux';
 
 
-
+export const ContactsApiList = ({ contacts, onDelete }) => {
+  return (
+    <ul>
+      {contacts.map(contact => (
+        <li key={contact.id}>
+          {contacts.content} <button onClick={() => onDelete(contact.id)}>DELETE</button>
+        </li>
+      ))}
+    </ul>
+  )
+};
 function ContactList() {
 
   const filter= useSelector(getFilter);
@@ -42,15 +52,7 @@ function ContactList() {
     </ul>
   );
 }
-export const ContList = ({ cont }) => {
-  return (
-    <ul>
-      {cont.map(con => (
-        <li key={con.id}>{ cont.content}</li>
-      ))}
-    </ul>
-  )
-}
+
 
 
 export default ContactList;
