@@ -9,7 +9,7 @@ export const Pokemon = () => {
         // 
     });
     // const normalizedPokemon = pokemonName.toLowerCase().value;
-    console.log('pokemonName', pokemonName);
+    // console.log('pokemonName', pokemonName);
     // console.log('data', data);
     // console.log('isFetching', isFetching)
     

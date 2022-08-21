@@ -10,13 +10,14 @@ import { Pokemon } from './pokemon/pokemon';
 import { useFechContactQuery,  useDeleteContactMutation } from 'redux/contactApi';
 import Loader from './Loader';
 import { ContactsApiList } from './ContactList/ContactList';
+import { ContactFormApi } from './ContactForm/ContactForm';
 
 
 const App = () => {
 
   const { data: contacts, isFetching } = useFechContactQuery();
-  console.log({data:contacts})
-  const [deleteContact] = useDeleteContactMutation();
+  
+  const [deleteContact, {isLoading: isDeleting}] = useDeleteContactMutation();
 // const contacts = useSelector(getContacts);
   return (
     <div className={css.container}>
@@ -26,7 +27,9 @@ const App = () => {
         <h1 className={css.title}>
           Phone<span className={css.title__color}>book</span>
         </h1>
-        <ContactForm  />
+      {/* <ContactForm /> */}
+      
+      <ContactFormApi />
 
         <h2 className={css.subtitle}>Contacts</h2>
         
@@ -39,7 +42,7 @@ const App = () => {
           {/* )} */}
         
         {isFetching && <Loader />}
-      {contacts && <ContactsApiList contacts={contacts} onDelete={ deleteContact} />}
+      {contacts && <ContactsApiList contacts={contacts} onDelete={ deleteContact} deleting={isDeleting} />}
 
         
       </div>
