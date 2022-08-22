@@ -1,61 +1,72 @@
 
 import { useState } from 'react';
 import css from './ContactForm.module.css';
-import { nanoid } from 'nanoid';
+// import { nanoid } from 'nanoid';
 import { Report } from 'notiflix/build/notiflix-report-aio';
-import { useSelector, useDispatch } from 'react-redux';
-import { addContacts, getContacts } from 'redux/contactsSlice';
+// import { useSelector, useDispatch } from 'react-redux';
+// import { addContacts, getContacts } from 'redux/contactsSlice';
 
-import Loader from 'components/Loader';
+// import Loader from 'components/Loader';
 import { useCreateContactMutation, useFechContactQuery } from 'redux/contactApi';
 
 export const ContactFormApi = () => {
   const [createContact] = useCreateContactMutation();
-  const { contact } = useFechContactQuery();
-  const [inputName, setInputName] = useState('');
-  const [inputPhone, setInputPhone] = useState('');
-
-
-  const handleInputName = e => setInputName(e.currentTarget.value);
-  const handleInputPhone = e => setInputPhone(e.currentTarget.value);
+  const contacts = useFechContactQuery();
+ 
+  const [name, setName] = useState('');
+  console.log(name)
+  const [phone, setPhone] = useState('');
   
-  const handeleSubmit = e => {
-    e.preventDefault();
-
-    const data = newData();
-    if (checkContacts(data)) {
-      alert(`${data.name} is already in contacts`);
-      return false;
-    }
-
-    createContact(data);
-
-    if (data) {
-      setInputName('');
-      setInputPhone('');
-    }
-
-    return true;
+ 
+  
+  const onChangeName = e => {
+    setName(e.currentTarget.value);
   };
 
-  const newData = () => ({
-    name: inputName,
-    phone: inputPhone,
-  });
+  const onChangeNumber = e => {
+    setPhone(e.currentTarget.value);
+  };
 
-  const checkContacts = phone => contact.find(({ name }) => name.toLowerCase() === phone.name.toLowerCase());
-
+  const onSubmitForm = e => {
+    e.preventDefault();
+    
+    const newContact = {  name, phone };
+    
+    
+    // createContact(newContact);
+    // reset();
+    
+    userCheck? Report.warning(
+      `${name}`,
+      'This user is already in the contact list.',
+      'OK'
+      )
+      : createContact(newContact);
+      reset(); 
+    };
+    
+  const userCheck = () => {
+    // eslint-disable-next-line no-unused-expressions
+    contacts.name.toLowerCase() === name.toLowerCase();
+    
+  };
+    
+  const reset = () => {
+      setName('');
+      setPhone('');
+    };
+  
   return (
     <>
-       <form className={css.form} avtocomplete="off" onSubmit={handeleSubmit}>
+       <form className={css.form} avtocomplete="off" onSubmit={onSubmitForm}>
         <label className={css.label}>
           <span className={css.title}>Name</span>
           <input
             className={css.input}
-            onChange={handleInputName}
+            onChange={onChangeName}
             type="text"
             name="name"
-            value={inputName}
+            value={name}
             pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
             title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
             required
@@ -65,10 +76,10 @@ export const ContactFormApi = () => {
           <span className={css.title}>Number</span>
           <input
             className={css.input}
-            onChange={handleInputPhone}
+            onChange={onChangeNumber}
             type="tel"
             name="phone"
-            value={inputPhone}
+            value={phone}
             pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
             title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
             required

@@ -31,6 +31,5 @@ export const contactApi = createApi({
     
     }),
 });
-// console.log(query)
 
 export const { useFechContactQuery, useDeleteContactMutation, useCreateContactMutation } = contactApi;
