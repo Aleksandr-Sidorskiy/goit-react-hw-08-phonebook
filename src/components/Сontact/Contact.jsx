@@ -21,8 +21,9 @@ export const ContactApi = ({ name, phone, id  }) => {
 
       <div className={css.wrapper}>
          <p className={css.number}>{phone}{''}</p>
+
          <button className={css.button} onClick={() => deleteContact(id)} disabled={isDeleting}>
-           {isDeleting && <Loader />}
+           {isDeleting && <Loader size={ 12} />}
           <FaTrash />
          </button>
        </div>

@@ -6,7 +6,7 @@ import Filter from './Filter';
 import css from './App.module.css';
 // import { useSelector } from 'react-redux';
 // import { getContacts } from 'redux/contactsSlice';
-import { Pokemon } from './pokemon/pokemon';
+// import { Pokemon } from './pokemon/pokemon';
 import { useFechContactQuery,  useDeleteContactMutation } from 'redux/contactApi';
 import Loader from './Loader';
 import { ContactsApiList } from './ContactList/ContactList';
@@ -21,27 +21,18 @@ const App = () => {
 // const contacts = useSelector(getContacts);
   return (
     <div className={css.container}>
-        <h1>POKEMON</h1>
-        <Pokemon/>
-
+      
         <h1 className={css.title}>
           Phone<span className={css.title__color}>book</span>
         </h1>
-      {/* <ContactForm /> */}
       
       <ContactFormApi />
 
         <h2 className={css.subtitle}>Contacts</h2>
-        
-      <Filter />
-        
-        {/* {contacts.length > 0 ?  */}
-          {/* <ContactList /> */}
-        
-          {/* <Message text="Contact list is empty." /> */}
-          {/* )} */}
-        
-        {isFetching && <Loader />}
+         
+      <Filter  />
+
+      {isFetching && <Loader />}
       {contacts && <ContactsApiList contacts={contacts} onDelete={ deleteContact} deleting={isDeleting} />}
 
         

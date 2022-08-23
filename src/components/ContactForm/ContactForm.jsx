@@ -1,25 +1,17 @@
 
 import { useState } from 'react';
 import css from './ContactForm.module.css';
-// import { nanoid } from 'nanoid';
 import { Report } from 'notiflix/build/notiflix-report-aio';
-// import { useSelector, useDispatch } from 'react-redux';
-// import { addContacts, getContacts } from 'redux/contactsSlice';
-
-// import Loader from 'components/Loader';
 import { useCreateContactMutation, useFechContactQuery } from 'redux/contactApi';
 
 export const ContactFormApi = () => {
   const [createContact] = useCreateContactMutation();
-  const contacts = useFechContactQuery();
+  const {data: contacts} = useFechContactQuery();
  
   const [name, setName] = useState('');
-  console.log(name)
   const [phone, setPhone] = useState('');
   
- 
-  
-  const onChangeName = e => {
+ const onChangeName = e => {
     setName(e.currentTarget.value);
   };
 
@@ -27,29 +19,18 @@ export const ContactFormApi = () => {
     setPhone(e.currentTarget.value);
   };
 
-  const onSubmitForm = e => {
+  const onSubmitForm = (e) => {
     e.preventDefault();
     
-    const newContact = {  name, phone };
-    
-    
-    // createContact(newContact);
-    // reset();
-    
-    userCheck? Report.warning(
+    contacts.some(contact => contact.name.toLowerCase() === name.toLowerCase())
+      ? Report.warning(
       `${name}`,
       'This user is already in the contact list.',
       'OK'
       )
-      : createContact(newContact);
+      : createContact({  name, phone });
       reset(); 
     };
-    
-  const userCheck = () => {
-    // eslint-disable-next-line no-unused-expressions
-    contacts.name.toLowerCase() === name.toLowerCase();
-    
-  };
     
   const reset = () => {
       setName('');
