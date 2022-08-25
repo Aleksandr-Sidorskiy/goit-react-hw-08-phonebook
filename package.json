@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://aleksandr-sidorskiy.github.io/goit-react-hw-07-phonebook/",
   "dependencies": {
+    "@emotion/react": "^11.10.0",
     "@emotion/styled": "^11.10.0",
     "@reduxjs/toolkit": "^1.8.3",
     "@testing-library/jest-dom": "^5.16.3",

@@ -1,65 +1,48 @@
 import { ContactApi } from 'components/Сontact/Contact';
-// import Contact from '../Сontact';
-// import css from './ContactList.module.css';
-// import { deleteContact, getContacts, getFilter } from 'redux/contactsSlice';
-// import { useSelector, useDispatch } from 'react-redux';
+import css from './ContactList.module.css';
+import { getFilter } from 'redux/contactsSelector';
+import { useSelector} from 'react-redux';
+import { useFechContactQuery, useDeleteContactMutation } from 'redux/contactApi';
+import PropTypes from "prop-types";
+import Message from 'components/Message';
 
 
-export const ContactsApiList = ({ contacts }) => {
+export const ContactsApiList = () => {
   
-  return (
+  const filter = useSelector(getFilter);
+  const { data } = useFechContactQuery();
+  const [deleteContact] = useDeleteContactMutation();
+  const onDeleteContact =id =>deleteContact(id)
+
+  const filterContactsNorm = () => {
+    const normalizedFilter = filter.toLowerCase();
+    return data.filter(contact => 
+      contact.name.toLowerCase().includes(normalizedFilter),
+    ) ?? [];
+  };
+
+  const filterContacts = filterContactsNorm();
+  
+  return data.length === 0 ? (<Message text='Contact list is empty.'/>):(
+    
     <ul>
-      {contacts.map(contact => (
-      <ContactApi key={contact.id} {...contact} />
+      {filterContacts.map(({name, phone, id}) => (
+          <li className={css.item} key={id}>
+            <ContactApi
+              name={name}
+              phone={phone}
+              deleteContact={()=>onDeleteContact(id)}
+              id={id}
+          />
+         </li>
       ))}
-    </ul>
-  )
-};
-        // {/* <li className={css.item}  key={contact.id}>
-        //       <ContactApi    
-        //         name = {contact.name}
-        //         phone = {contact.phone}
-        //         contactId={contact.id}
-        //         deleteContact = {() => deleteContact(contact.id)}
-        //     />
-        // </li> */}
-// function ContactList() {
 
-//   const filter= useSelector(getFilter);
-//   const contacts = useSelector(getContacts);
-
-//   const dispatch = useDispatch();
-  
-//   // const deleteContacts = contactId => dispatch(deleteContact(contactId));
-  
-//   const filtredContacts = () => {
-//     const normalizedFilter = filter.toLowerCase();
-//     return contacts.filter(contact =>
-//       contact.name.toLowerCase().includes(normalizedFilter),
-//     );
-//   };
-
-//   const filteredContactList = filtredContacts();
-
-  
-//   return (
-//     <ul>
-//       {filteredContactList.map(({id, name, number}) => {
-//         return (
-//           <li className={css.item} key={id}>
-//             <Contact
-//               name={name}
-//               number={number}
-//               deleteContact={()=>deleteContacts(id)}
-//               contactId={id}
-//             />
-//           </li>
-//         );
-//       })}
-//     </ul>
-//   );
-// }
-
-
-
-// export default ContactList;
+    </ul> 
+    )
+  };
+ 
+ContactsApiList.propTypes = {
+  name: PropTypes.string,
+  phone: PropTypes.string,
+  id:PropTypes.string,
+  }

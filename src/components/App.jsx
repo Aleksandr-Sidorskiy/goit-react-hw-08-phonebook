@@ -1,24 +1,16 @@
-
-// import ContactForm from './ContactForm';
-// import ContactList from './ContactList/ContactList';
 import Filter from './Filter';
-// import Message from './Message';
 import css from './App.module.css';
-// import { useSelector } from 'react-redux';
-// import { getContacts } from 'redux/contactsSlice';
-// import { Pokemon } from './pokemon/pokemon';
-import { useFechContactQuery,  useDeleteContactMutation } from 'redux/contactApi';
-import Loader from './Loader';
+import { useFechContactQuery } from 'redux/contactApi';
+import { Spinner } from './Spinner/Spinner';
 import { ContactsApiList } from './ContactList/ContactList';
 import { ContactFormApi } from './ContactForm/ContactForm';
 
 
 const App = () => {
 
-  const { data: contacts, isFetching } = useFechContactQuery();
+  const { data: contacts, isLoading } = useFechContactQuery();
   
-  const [deleteContact, {isLoading: isDeleting}] = useDeleteContactMutation();
-// const contacts = useSelector(getContacts);
+  
   return (
     <div className={css.container}>
       
@@ -32,8 +24,8 @@ const App = () => {
          
       <Filter  />
 
-      {isFetching && <Loader />}
-      {contacts && <ContactsApiList contacts={contacts} onDelete={ deleteContact} deleting={isDeleting} />}
+      { contacts && <ContactsApiList contacts={contacts}  />}
+      {isLoading && <Spinner color='blue' size={30} />}
 
         
       </div>

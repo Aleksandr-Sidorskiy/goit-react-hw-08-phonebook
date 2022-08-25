@@ -11,8 +11,6 @@ const changeFilter = e => {
   
   dispatch(setFilter(e.currentTarget.value))
 };
-console.log(changeFilter)
-
 
   return (
     <label className={css.label}>
@@ -20,7 +18,7 @@ console.log(changeFilter)
       <input
         className={css.input}
         type="text"
-        onChange={console.log(changeFilter)}
+        onChange={changeFilter}
         value = {value}
       />
     </label>
