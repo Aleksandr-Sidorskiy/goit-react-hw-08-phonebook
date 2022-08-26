@@ -28,7 +28,7 @@ export const ContactFormApi = () => {
       'This user is already in the contact list.',
       'OK'
       )
-      : createContact({ name, phone });
+      : createContact({ name, phone }) &&
       reset(); 
     };
     
@@ -72,7 +72,7 @@ export const ContactFormApi = () => {
         <button className={css.button} type="submit" disabled={isLoading}>
           {isLoading && <Spinner size={15} />}
           Add contact
-        </button>\
+        </button>
 
       </form>
     </>
