@@ -7,21 +7,21 @@ import PropTypes from "prop-types";
 import Message from 'components/Message';
 
 
-export const ContactsApiList = () => {
+ const ContactsApiList = () => {
   
   const filter = useSelector(getFilter);
   const { data } = useFechContactQuery();
   const [deleteContact] = useDeleteContactMutation();
-  const onDeleteContact =id =>deleteContact(id)
+  const onDeleteContact = id =>deleteContact(id)
 
-  const filterContactsNorm = () => {
+  const filterContactsForm = () => {
     const normalizedFilter = filter.toLowerCase();
     return data.filter(contact => 
       contact.name.toLowerCase().includes(normalizedFilter),
     ) ?? [];
   };
 
-  const filterContacts = filterContactsNorm();
+  const filterContacts = filterContactsForm();
   
   return data.length === 0 ? (<Message text='Contact list is empty.'/>):(
     
@@ -45,4 +45,6 @@ ContactsApiList.propTypes = {
   name: PropTypes.string,
   phone: PropTypes.string,
   id:PropTypes.string,
-  }
+}
+  
+export default ContactsApiList;

@@ -1,45 +1,48 @@
-import { Spinner } from 'components/Spinner/Spinner';
+import { Spinner } from "components/Spinner/Spinner";
+import { ContactFormApi } from "components/ContactForm/ContactForm";
 import { useState } from 'react';
-import css from './ContactForm.module.css';
+import css from '../components/ContactForm/ContactForm.module.css';
 import { Report } from 'notiflix/build/notiflix-report-aio';
-import { useCreateContactMutation, useFechContactQuery } from 'redux/contactApi';
+import { useCreateContactMutation,useFechContactQuery } from "redux/contactApi";
 
-export const ContactFormApi = () => {
-  const [createContact, {isLoading}] = useCreateContactMutation();
-  const {data: contacts} = useFechContactQuery();
+export const FormAddContactPage = () => { 
+// const [createContact, {isLoading}] = useCreateContactMutation();
+//   const {data: contacts} = useFechContactQuery();
  
-  const [name, setName] = useState('');
-  const [phone, setPhone] = useState('');
+//   const [name, setName] = useState('');
+//   const [phone, setPhone] = useState('');
   
-  const onChangeName = e => {
-    setName(e.currentTarget.value);
-  };
+//   const onChangeName = e => {
+//     setName(e.currentTarget.value);
+//   };
 
-  const onChangeNumber = e => {
-    setPhone(e.currentTarget.value);
-  };
+//   const onChangeNumber = e => {
+//     setPhone(e.currentTarget.value);
+//   };
 
-  const onSubmitForm = (e) => {
-    e.preventDefault();
+//   const onSubmitForm = (e) => {
+//     e.preventDefault();
     
-    contacts.some(contact => contact.name.toLowerCase() === name.toLowerCase())
-      ? Report.warning(
-      `${name}`,
-      'This user is already in the contact list.',
-      'OK'
-      )
-      : createContact({ name, phone }) &&
-      reset(); 
-    };
+//     contacts.some(contact => contact.name.toLowerCase() === name.toLowerCase())
+//       ? Report.warning(
+//       `${name}`,
+//       'This user is already in the contact list.',
+//       'OK'
+//       )
+//       : createContact({ name, phone }) &&
+//       reset(); 
+//     };
     
-  const reset = () => {
-      setName('');
-      setPhone('');
-    };
-  
-   return (
-     <>
-       <form className={css.form}  onSubmit={onSubmitForm}>
+//   const reset = () => {
+//       setName('');
+//       setPhone('');
+//     };
+
+    return (
+    
+      <>
+        <ContactFormApi/>
+       {/* <form className={css.form}  onSubmit={onSubmitForm}>
         
         <label className={css.label}>
           <span className={css.title}>Name</span>
@@ -74,9 +77,9 @@ export const ContactFormApi = () => {
           Add contact
         </button>
 
-      </form>
+      </form> */}
     </>
-   )
+  )
 };
 
 
