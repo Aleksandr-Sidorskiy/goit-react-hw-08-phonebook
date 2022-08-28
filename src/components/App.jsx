@@ -1,16 +1,17 @@
 import { Routes, Route} from 'react-router-dom';
 // import Filter from './Filter';
 // import css from './App.module.css';
-// import { useFechContactQuery } from 'redux/contactApi';
+// import { useFetchContactQuery } from 'redux/contactApi';
 // import { Spinner } from './Spinner/Spinner';
 // import { ContactsApiList } from './ContactList/ContactList';
 // import { ContactFormApi } from './ContactForm/ContactForm';
 import { HomePage } from 'pages/HomePage';
-import { ContactsFilterPage } from 'pages/ContactsFilter';
+import { ContactsFilterPage } from 'pages/ContactsFilterPage';
 import { LoginPage } from 'pages/LoginPage';
 import { RegisterPage } from 'pages/RegisterPage';
 import { FormAddContactPage } from 'pages/FormAddContactPage';
 import { Container, Header, LinkNav, Logo } from './Header/header.styled';
+import ContactsApiList from './ContactList/ContactList';
 
 const App = () => {
 

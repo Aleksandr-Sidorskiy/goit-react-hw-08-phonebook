@@ -8,7 +8,7 @@ export const contactApi = createApi({
     tagTypes:['Contact'],
     endpoints: (builder) => ({
         
-        fechContact: builder.query({
+        fetchContact: builder.query({
             query: () => `/contacts`,
             providesTags:['Contact']
         }),
@@ -35,8 +35,8 @@ export const contactApi = createApi({
     }),
 });
 
-export const {
-    useFechContactQuery,
+export const { 
+    useFetchContactQuery,
     useDeleteContactMutation,
     useCreateContactMutation
 } = contactApi;
