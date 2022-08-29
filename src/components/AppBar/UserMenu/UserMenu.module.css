@@ -1,0 +1,16 @@
+.button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 200px;
+    height: 40px;
+
+    background-color: var(--accent-bg-color);
+    color: var(--second-text-color);
+    font-family: inherit;
+    border: none;
+
+    cursor: pointer;
+    transition: background-color var(--main-hover-animation);
+}

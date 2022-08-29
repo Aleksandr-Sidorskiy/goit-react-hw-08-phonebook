@@ -1,15 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = {
-    user: { name: null, email: null },
-    token: null,
-    isLoggedIn: false,
-    filter: '' ,
-}
 
 export const contactsSlice = createSlice({
     name: 'contacts',
-    initialState ,
+    initialState: { filter: '' },
     reducers: {
         
          setFilter (state, {payload}) {

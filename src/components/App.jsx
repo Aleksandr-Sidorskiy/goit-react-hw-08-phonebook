@@ -10,24 +10,16 @@ import { ContactsFilterPage } from 'pages/ContactsFilterPage';
 import { LoginPage } from 'pages/LoginPage';
 import { RegisterPage } from 'pages/RegisterPage';
 import { FormAddContactPage } from 'pages/FormAddContactPage';
-import { Container, Header, LinkNav, Logo } from './Header/header.styled';
-import ContactsApiList from './ContactList/ContactList';
+import { Container, Header } from './Header/header.styled';
+// import ContactsApiList from './ContactList/ContactList';
+import AppBar from './AppBar/AppBar';
 
 const App = () => {
 
   return (
     <Container >
       <Header>
-          <Logo>
-            HW-8
-          </Logo>
-        <nav>
-          <LinkNav to="/">Home</LinkNav>
-          <LinkNav to='/register'>Register</LinkNav>
-          <LinkNav to="/login">Login</LinkNav>
-          <LinkNav to="/form">Add contact</LinkNav>
-          <LinkNav to="/filter">Search contact</LinkNav>
-        </nav>
+         <AppBar/>
       </Header>
 
       <Routes>
