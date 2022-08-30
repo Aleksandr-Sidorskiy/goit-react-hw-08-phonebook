@@ -27,11 +27,11 @@ import Message from 'components/Message';
   return data.length === 0 ? (<Message text='Contact list is empty.'/>):(
     
     <ul>
-      {filterContacts.map(({name, phone, id}) => (
+      {filterContacts.map(({name, number, id}) => (
           <li className={css.item} key={id}>
             <ContactApi
               name={name}
-              phone={phone}
+              number={number}
               deleteContact={()=>onDeleteContact(id)}
               id={id}
           />
@@ -44,7 +44,7 @@ import Message from 'components/Message';
  
 ContactsApiList.propTypes = {
   name: PropTypes.string,
-  phone: PropTypes.string,
+  number: PropTypes.string,
   id:PropTypes.string,
 }
   

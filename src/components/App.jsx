@@ -1,10 +1,6 @@
-import { Routes, Route} from 'react-router-dom';
-// import Filter from './Filter';
-// import css from './App.module.css';
-// import { useFetchContactQuery } from 'redux/contactApi';
-// import { Spinner } from './Spinner/Spinner';
-// import { ContactsApiList } from './ContactList/ContactList';
-// import { ContactFormApi } from './ContactForm/ContactForm';
+import { Routes, Route } from 'react-router-dom';
+// import { useEffect } from 'react';
+// import { useDispatch } from 'react-redux';
 import { HomePage } from 'pages/HomePage';
 import { ContactsFilterPage } from 'pages/ContactsFilterPage';
 import { LoginPage } from 'pages/LoginPage';
@@ -13,8 +9,15 @@ import { FormAddContactPage } from 'pages/FormAddContactPage';
 import { Container, Header } from './Header/header.styled';
 // import ContactsApiList from './ContactList/ContactList';
 import AppBar from './AppBar/AppBar';
+// import {authOperations} from 'redux/auth'
+// import fetchCurrentUser  from 'redux/auth/auth-operations';
 
 const App = () => {
+  // const dispatch = useDispatch();
+
+//   useEffect(() => {
+//   dispatch(authOperations, fetchCurrentUser())
+// },[dispatch])
 
   return (
     <Container >

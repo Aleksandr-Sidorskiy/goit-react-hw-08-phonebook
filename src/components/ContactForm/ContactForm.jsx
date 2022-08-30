@@ -7,16 +7,16 @@ import { useCreateContactMutation, useFetchContactQuery } from 'redux/contactApi
 export const ContactFormApi = () => {
   const [createContact, {isLoading}] = useCreateContactMutation();
   const {data: contacts} = useFetchContactQuery();
- 
+ console.log(contacts)
   const [name, setName] = useState('');
-  const [phone, setPhone] = useState('');
+  const [number, setNumber] = useState('');
   
   const onChangeName = e => {
     setName(e.currentTarget.value);
   };
 
   const onChangeNumber = e => {
-    setPhone(e.currentTarget.value);
+    setNumber(e.currentTarget.value);
   };
 
   const onSubmitForm = (e) => {
@@ -28,13 +28,13 @@ export const ContactFormApi = () => {
       'This user is already in the contact list.',
       'OK'
       )
-      : createContact({ name, phone }) &&
+      : createContact({ name, number }) &&
       reset(); 
     };
     
   const reset = () => {
       setName('');
-      setPhone('');
+      setNumber('');
     };
   
    return (
@@ -61,8 +61,8 @@ export const ContactFormApi = () => {
             className={css.input}
             onChange={onChangeNumber}
             type="tel"
-            name="phone"
-            value={phone}
+            name="number"
+            value={number}
             pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
             title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
             required

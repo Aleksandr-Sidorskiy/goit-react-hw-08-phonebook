@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import authOperations from './auth-operations';
-import storage from "redux-persist/lib/storage";
-import { persistReducer } from "redux-persist";
+// import storage from "redux-persist/lib/storage";
+// import { persistReducer } from "redux-persist";
 
 const initialState = {
     user: { name: null, email: null },
@@ -9,11 +9,11 @@ const initialState = {
     isLoggedIn: false,
 };
 
-const authPersistConfig = {
-  key: 'auth',
-  storage,
-  whitelist: ['token'],
-};
+// const authPersistConfig = {
+//   key: 'auth',
+//   storage,
+//   whitelist: ['token'],
+// };
 
 export const authSlice = createSlice({
     name: 'auth',
@@ -44,7 +44,7 @@ export const authSlice = createSlice({
     },
 });
 
-export const persisteAuthReducer = persistReducer(
-  authPersistConfig,
-  authSlice.reducer,
-);
+// export const persisteAuthReducer = persistReducer(
+//   authPersistConfig,
+//   authSlice.reducer,
+// );
