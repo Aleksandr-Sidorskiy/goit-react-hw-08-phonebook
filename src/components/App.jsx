@@ -1,6 +1,7 @@
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { Routes, Route } from 'react-router-dom';
-// import { useEffect } from 'react';
-// import { useDispatch } from 'react-redux';
+import AppBar from './AppBar/AppBar';
 import { HomePage } from 'pages/HomePage';
 import { ContactsFilterPage } from 'pages/ContactsFilterPage';
 import { LoginPage } from 'pages/LoginPage';
@@ -8,16 +9,15 @@ import { RegisterPage } from 'pages/RegisterPage';
 import { FormAddContactPage } from 'pages/FormAddContactPage';
 import { Container, Header } from './Header/header.styled';
 // import ContactsApiList from './ContactList/ContactList';
-import AppBar from './AppBar/AppBar';
-// import {authOperations} from 'redux/auth'
+import {authOperations} from 'redux/auth';
 // import fetchCurrentUser  from 'redux/auth/auth-operations';
 
 const App = () => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-//   useEffect(() => {
-//   dispatch(authOperations, fetchCurrentUser())
-// },[dispatch])
+  useEffect(() => {
+    dispatch(authOperations.fetchCurrentUser());
+  }, [dispatch]);
 
   return (
     <Container >

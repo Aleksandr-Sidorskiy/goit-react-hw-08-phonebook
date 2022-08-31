@@ -8,12 +8,7 @@ const initialState = {
     token: null,
     isLoggedIn: false,
 };
-
-// const authPersistConfig = {
-//   key: 'auth',
-//   storage,
-//   whitelist: ['token'],
-// };
+console.log(initialState)
 
 export const authSlice = createSlice({
     name: 'auth',
@@ -43,8 +38,4 @@ export const authSlice = createSlice({
         },
     },
 });
-
-// export const persisteAuthReducer = persistReducer(
-//   authPersistConfig,
-//   authSlice.reducer,
-// );
+export default authSlice.reducer;
