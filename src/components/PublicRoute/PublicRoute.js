@@ -12,10 +12,10 @@ function PublicRoute({ children, restricted = false, redirectTo = '/registrer' }
     
 };
 
-// PublicRoute.propTypes = {
-//   children: PropTypes.element,
-//   restricted: PropTypes.bool,
-//   redirectTo: PropTypes.string,
-// };
+PublicRoute.propTypes = {
+  children: PropTypes.element,
+  restricted: PropTypes.bool,
+  redirectTo: PropTypes.string,
+};
 
 export default PublicRoute;

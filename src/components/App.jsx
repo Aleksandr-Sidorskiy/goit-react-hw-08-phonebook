@@ -4,9 +4,9 @@ import { Routes, Route } from 'react-router-dom';
 import AppBar from './AppBar/AppBar';
 import { Container, Header } from './Header/header.styled';
 import { authOperations } from 'redux/auth';
-import { lazy } from 'react';
-import PrivatRoute from './PrivatRoute';
-import PublicRoute from './PublicRoute';
+// import { lazy } from 'react';
+// import PrivatRoute from './PrivatRoute';
+// import PublicRoute from './PublicRoute';
 
 import { HomePage } from 'pages/HomePage';
 import { RegisterPage } from 'pages/RegisterPage';
