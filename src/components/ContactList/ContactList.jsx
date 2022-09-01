@@ -1,8 +1,8 @@
 import { ContactApi } from 'components/Сontact/Contact';
 import css from './ContactList.module.css';
-import { getFilter } from 'redux/contactsSelector';
+import { getFilter } from 'redux/todos/contactsSelector';
 import { useSelector} from 'react-redux';
-import { useFetchContactQuery, useDeleteContactMutation } from 'redux/contactApi';
+import { useFetchContactQuery, useDeleteContactMutation } from 'redux/todos/contactApi';
 import PropTypes from "prop-types";
 import Message from 'components/Message';
 

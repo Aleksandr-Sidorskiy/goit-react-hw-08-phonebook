@@ -1,5 +1,5 @@
-import { contactApi } from './contactApi';
-import {contactsSlice}  from './contactsSlice';
+import { contactApi } from './todos/contactApi';
+import {contactsSlice}  from './todos/contactsSlice';
 import { configureStore } from '@reduxjs/toolkit';
 // import { persisteAuthReducer } from './auth/auth-slice';
 import { authSlice } from './auth/auth-slice';

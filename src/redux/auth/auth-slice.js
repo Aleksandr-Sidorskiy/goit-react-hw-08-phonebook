@@ -8,7 +8,6 @@ const initialState = {
     token: null,
     isLoggedIn: false,
 };
-console.log(initialState)
 
 export const authSlice = createSlice({
     name: 'auth',

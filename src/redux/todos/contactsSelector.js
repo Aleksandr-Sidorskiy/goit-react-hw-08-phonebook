@@ -14,9 +14,3 @@ const getAllContacts = state => state.contacts.items;
   },
 );
 
-// const contactSelectors = {
-//     getFilter,
-//     getVisibleContacts,
-// };
-
-// export default contactSelectors;

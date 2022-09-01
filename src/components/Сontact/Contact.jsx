@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { FaTrash, FaUserAlt } from 'react-icons/fa';
 import css from './Contact.module.css';
-import { useDeleteContactMutation } from 'redux/contactApi';
+import { useDeleteContactMutation } from 'redux/todos/contactApi';
 import { Spinner } from 'components/Spinner/Spinner';
 
 export const ContactApi = ({ name, number, id  }) => {

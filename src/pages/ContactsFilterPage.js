@@ -1,7 +1,7 @@
 import {  useSelector } from "react-redux";
 import css from '../components/ContactList/ContactList.module.css';
-import { useFetchContactQuery, useDeleteContactMutation } from "redux/contactApi";
-import { getFilter } from "redux/contactsSelector";
+import { useFetchContactQuery, useDeleteContactMutation } from "redux/todos/contactApi";
+import { getFilter } from "redux/todos/contactsSelector";
 // import PropTypes from "prop-types";
 import Message from 'components/Message';
 import { ContactApi } from "components/Сontact/Contact";

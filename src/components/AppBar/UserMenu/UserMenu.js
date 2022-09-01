@@ -6,13 +6,14 @@ import authSelectors from 'redux/auth/auth-selectors';
 
 function UserMenu() {
     const dispatch = useDispatch();
-    // const userName = useSelector(authSelectors.getName);
-    const userName = useSelector(state=>getName(state));
+    const userName = useSelector(authSelectors.getName);
+    // const userName = useSelector(state => getName(state));
+   
     
   
     return (
         <div>
-            <span>Добро пожаловать, {userName}</span>
+            <span>Добро пожаловать,{userName}</span>
             <button className={css.button} type="button" onClick={() => dispatch(authOperations.logOut())}>
         Выйти
       </button>
