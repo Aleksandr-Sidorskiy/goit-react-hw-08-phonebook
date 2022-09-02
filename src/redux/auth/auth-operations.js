@@ -7,7 +7,6 @@ const token = {
   set(token) {
     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
   },
-  
   unset() {
     axios.defaults.headers.common.Authorization = '';
   },
@@ -31,6 +30,7 @@ const logIn = createAsyncThunk('auth/login', async credentials => {
     token.set(data.token);
     return data;
   } catch (error) {
+    console.log('Не залогинилось')
     // TODO: Добавить обработку ошибки error.message
   }
 });
@@ -45,6 +45,7 @@ const logOut = createAsyncThunk('auth/logout', async () => {
     await axios.post('/users/logout');
     token.unset();
   } catch (error) {
+     console.log('Не разлогинилось')
     // TODO: Добавить обработку ошибки error.message
   }
 });
@@ -61,23 +62,23 @@ export const fetchCurrentUser = createAsyncThunk(
   'auth/refresh',
   async (_, thunkAPI) => {
     const state = thunkAPI.getState();
-    // console.log(thunkAPI.getState());
     const persistedToken = state.auth.token;
-
+    
     if (persistedToken === null) {
-      console.log('Токена нет, уходим из fetchCurrentUser');
+      // console.log('Токена нет, уходим из fetchCurrentUser');
       return state;
     }
-
+    
     token.set(persistedToken);
     try {
       const { data } = await axios.get('/users/current');
+      console.log("thunkAPI",thunkAPI.getState());
       return data;
     } catch (error) {
       // TODO: Добавить обработку ошибки error.message
     }
   },
-);
+  );
 
 const operations = {
   register,

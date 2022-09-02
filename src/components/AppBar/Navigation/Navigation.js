@@ -7,10 +7,10 @@ import { useSelector } from 'react-redux';
 function Navigation() {
 const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
     return (
-     <nav>
+     <nav className={css.Navigation}>
         <NavLink className={css.navigation} to="/">Home</NavLink> 
             
-        { isLoggedIn &&
+            {isLoggedIn &&
         <>
             <NavLink className={css.navigation} to="/form">Add contact</NavLink>
             <NavLink className={css.navigation} to="/filter">Search contact</NavLink>

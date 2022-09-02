@@ -12,10 +12,10 @@ function UserMenu() {
     
   
     return (
-        <div>
-            <span>Добро пожаловать,{userName}</span>
+        <div className={css.wrapper}>
             <button className={css.button} type="button" onClick={() => dispatch(authOperations.logOut())}>
-        Выйти
+            <span>logOut {userName}</span>
+        
       </button>
         </div>
     )
