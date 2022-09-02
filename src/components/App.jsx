@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Routes, Route } from 'react-router-dom';
 import AppBar from './AppBar/AppBar';
-import { Container, Header } from './Header/header.styled';
+import { Container } from './Header/header.styled';
 import { authOperations } from 'redux/auth';
 // import { lazy } from 'react';
 import PrivatRoute from './PrivatRoute';
