@@ -37,19 +37,7 @@ const App = () => {
       
       {isFetchingCurrentUser ? (<Spinner/>):
         (<>
-{/* <Header> */ }
          <AppBar/>
-      {/* </Header> */}
-      {/* <Routes>
-        <Route path='/' element= {<HomePage /> } />
-        <Route path='/register' element= {<RegisterPage /> } />
-        <Route path='/login' element={<LoginPage />} />
-         <Route path='/form' element={ <PrivatRoute isLoggedIn={isLoggedIn}> <FormAddContactPage/> </PrivatRoute> } />
-        <Route path='/filter' element={<PrivatRoute isLoggedIn={isLoggedIn}> <ContactsFilterPage /> </PrivatRoute>}  /> */}
-        {/* <Route path='/form' element={ <FormAddContactPage/>  } />
-        <Route path='/filter' element={ <ContactsFilterPage /> } /> */}
-      {/* </Routes> */}
-      
       <Routes>
         <Route path='/' element={<PublicRoute > <HomePage /> </PublicRoute>} />
         <Route path='/register'  element={<PublicRoute  restricted > <RegisterPage /> </PublicRoute>} />
