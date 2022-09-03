@@ -20,3 +20,8 @@
     cursor: pointer;
     transition: background-color var(--main-hover-animation);
 }
+
+.text{
+    font-family: inherit;
+    font-weight: 500;
+}

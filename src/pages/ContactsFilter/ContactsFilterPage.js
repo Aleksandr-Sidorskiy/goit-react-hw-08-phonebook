@@ -1,4 +1,4 @@
-import { useFetchContactQuery } from "redux/todos/contactApi";
+import { useFetchContactQuery } from "redux/contacts/contactApi";
 import Filter from "components/Filter";
 import ContactsApiList from "components/ContactList/ContactList";
 import { Outlet } from "react-router-dom";

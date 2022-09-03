@@ -1,20 +1,20 @@
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Routes, Route } from 'react-router-dom';
 import AppBar from './AppBar/AppBar';
 import { Container } from './Header/header.styled';
 import { authOperations } from 'redux/auth';
+import { Spinner } from './Spinner/Spinner';
 // import { lazy } from 'react';
 import PrivatRoute from './PrivatRoute';
 import PublicRoute from './PublicRoute';
-import { useSelector } from 'react-redux';
 import {authSelectors} from 'redux/auth';
 
-import { HomePage } from 'pages/HomePage';
-import { RegisterPage } from 'pages/RegisterPage';
-import { LoginPage } from 'pages/LoginPage';
+import { HomePage } from 'pages/HomePage/HomePage';
+import { RegisterPage } from 'pages/RegisterPage/RegisterPage';
+import { LoginPage } from 'pages/LoginPage/LoginPage';
 import { ContactsFilterPage } from 'pages/ContactsFilter/ContactsFilterPage';
-import { FormAddContactPage } from 'pages/FormAddContactPage';
+import { FormAddContactPage } from 'pages/FormAddContactPage/FormAddContactPage';
 // const HomePage = lazy(() => import('pages/HomePage'));
 // const RegisterPage = lazy(() => import('pages/RegisterPage'));
 // const LoginPage = lazy(() => import('pages/LoginPage'));
@@ -25,7 +25,8 @@ import { FormAddContactPage } from 'pages/FormAddContactPage';
 
 const App = () => {
   const dispatch = useDispatch();
-
+  const isFetchingCurrentUser = useSelector(authSelectors.getIsFetchingCurrent);
+ 
   useEffect(() => {
     dispatch(authOperations.fetchCurrentUser());
   }, [dispatch]);
@@ -33,7 +34,10 @@ const App = () => {
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
   return (
     <Container >
-      {/* <Header> */}
+      
+      {isFetchingCurrentUser ? (<Spinner/>):
+        (<>
+{/* <Header> */ }
          <AppBar/>
       {/* </Header> */}
       {/* <Routes>
@@ -53,6 +57,9 @@ const App = () => {
         <Route path='/form' element={ <PrivatRoute isLoggedIn={isLoggedIn}> <FormAddContactPage/> </PrivatRoute> } />
         <Route path='/filter' element={<PrivatRoute isLoggedIn={isLoggedIn}> <ContactsFilterPage /> </PrivatRoute>}  />
       </Routes>
+        </>
+          
+      )}
     </Container>
   ) 
   

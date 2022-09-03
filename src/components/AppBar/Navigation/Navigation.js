@@ -7,18 +7,25 @@ import { useSelector } from 'react-redux';
 function Navigation() {
 const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
     return (
-     <nav className={css.Navigation}>
-        <NavLink className={css.navigation} to="/">Home</NavLink> 
+        <nav className={css.Navigation}>
+        
             
             {isLoggedIn &&
-        <>
-            <NavLink className={css.navigation} to="/form">Add contact</NavLink>
-            <NavLink className={css.navigation} to="/filter">Search contact</NavLink>
-            <UserMenu />
-        </>
-        }
-    </nav>
-    )
+                <ul className={css.list}>
+                    <li className={css.item}>
+                        <NavLink className={css.navigation} to="/form">Add contact</NavLink>
+                    </li>
+                    <li className={css.item}>
+                        <NavLink className={css.navigation} to="/filter">Search contact</NavLink>
+                    </li>
+                    <li className={css.item}>
+                        <UserMenu />
+                    </li>
+
+                </ul>
+            }
+        </nav>
+    );
 };
 
 export default Navigation;

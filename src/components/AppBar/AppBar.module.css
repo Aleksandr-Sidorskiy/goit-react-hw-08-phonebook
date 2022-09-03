@@ -1,6 +1,4 @@
-.AppBar{
-  border-bottom: 1px solid var(--second-bg-color);
-    
+.AppBar{   
   display: flex;
   align-items: center;
   justify-content: space-between;

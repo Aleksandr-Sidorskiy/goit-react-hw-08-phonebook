@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 // import { authOperations } from "../redux/auth";
 import operations from "redux/auth/auth-operations";
-
+import { Title, Label, TitleInput, Input, Button,ButtonBox, Form } from './RegisterPageStyle';
 const styles = {
   form: {
     width: 320,
@@ -41,8 +41,48 @@ export const RegisterPage = () => {
     setEmail('');
     setPassword('');
   }
-    
     return (
+    <div>
+
+      <Form onSubmit={handleSubmit} >
+          <Title>Create your account</Title>
+          <Label >
+            <TitleInput>Your name</TitleInput>
+              <Input
+              type="text"
+              name="name"
+              value={name}
+              onChange={handleChange}              
+              />
+          </Label>
+        
+        <Label >
+         <TitleInput>Your e-mail adress?</TitleInput>
+            <Input
+                type="email"
+                name="email"
+                value={email}
+                onChange={handleChange}
+            />
+        </Label>
+
+        <Label >
+          <TitleInput>Your password?</TitleInput>
+            <Input
+                type="password"
+                name="password"
+                value={password}
+                onChange={handleChange}
+            />
+        </Label>
+        <ButtonBox>
+        <Button type="submit">Create account</Button>
+        </ButtonBox>
+      </Form>
+      
+    </div>
+)
+    {/* return (
        <div>
       <h1>Страница регистрации</h1>
 
@@ -81,5 +121,5 @@ export const RegisterPage = () => {
         <button type="submit">Зарегистрироваться</button>
       </form>
     </div>
-)
+) */}
 };

@@ -14,7 +14,7 @@ function UserMenu() {
     return (
         <div className={css.wrapper}>
             <button className={css.button} type="button" onClick={() => dispatch(authOperations.logOut())}>
-            <span>logOut {userName}</span>
+            <span className={css.text}>logOut {userName}</span>
         
       </button>
         </div>

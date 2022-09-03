@@ -1,17 +1,30 @@
-.navigation{
-    font-weight: 700;
-    margin: 0;
-    padding: 8px 16px;
-    border-radius: 4px;
-    text-decoration: none;
-    color: black;
-    font-weight: 500;
-    
-    }
+.authNav__box{
+display: flex;
 
-    .navigation:active{
+}
 
-        color: white;
-        background-color: blue;
-    }
+.navigation {
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    height: 40px;
+
+    background-color: var(--accent-bg-color);
+    color: var(--second-text-color);
+    font-family: inherit;
+    border: none;
+    border-radius: 5px;
+
+    cursor: pointer;
+    transition: background-color var(--main-hover-animation);
+
+}
+
+.navigation:focus,
+.navigation:hover {
+    background-color: var(--second-bg-color);
+}
+
     

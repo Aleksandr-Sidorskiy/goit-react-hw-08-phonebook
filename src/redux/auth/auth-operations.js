@@ -1,5 +1,6 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import { Report } from "notiflix";
 
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 
@@ -16,7 +17,12 @@ const register = createAsyncThunk('auth/register', async credentials => {
     try {
       const { data } = await axios.post('/users/signup', credentials);
       return data;
-    } catch (error) { }
+    } catch (error) {
+        Report.warning(
+        'Email or password entered incorrectly.',
+        'Try again!'
+      ); 
+     }
 });
 
 /*
@@ -30,7 +36,10 @@ const logIn = createAsyncThunk('auth/login', async credentials => {
     token.set(data.token);
     return data;
   } catch (error) {
-    console.log('Не залогинилось')
+     Report.warning(
+        'Email or password entered incorrectly.',
+        'Try again!'
+      );  
     // TODO: Добавить обработку ошибки error.message
   }
 });
@@ -66,15 +75,18 @@ export const fetchCurrentUser = createAsyncThunk(
     
     if (persistedToken === null) {
       // console.log('Токена нет, уходим из fetchCurrentUser');
-      return state;
+      return thunkAPI.rejectWithValue();
     }
     
     token.set(persistedToken);
     try {
       const { data } = await axios.get('/users/current');
-      console.log("thunkAPI",thunkAPI.getState());
       return data;
     } catch (error) {
+       Report.warning(
+        'Неправильный маршрут',
+        'Try again!'
+      ); 
       // TODO: Добавить обработку ошибки error.message
     }
   },

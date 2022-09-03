@@ -1,18 +1,43 @@
-.navigation {
+.Navigation {
     display: flex;
-    justify-content: flex-end;
+    align-items: center;
+
     font-weight: 700;
     margin: 0;
-    padding: 8px 16px;
-    border-radius: 4px;
-    text-decoration: none;
-    color: black;
-    font-weight: 500;
+   
 
 }
 
-.navigation:active {
+.list{
+    display: flex;
+    align-items: center;
+}
 
-    color: white;
-    background-color: blue;
+.item:not(:last-child) {
+    margin-right: 40px;
+}
+
+
+.navigation {
+display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    height: 40px;
+
+    background-color: var(--accent-bg-color);
+    color: var(--second-text-color);
+    font-family: inherit;
+    font-weight: 500;
+    border: none;
+    border-radius: 5px;
+
+    cursor: pointer;
+    transition: background-color var(--main-hover-animation);
+
+}
+
+.navigation:focus,
+.navigation:hover {
+background-color: var(--second-bg-color);
 }

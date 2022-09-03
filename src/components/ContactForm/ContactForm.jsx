@@ -2,7 +2,7 @@ import { Spinner } from 'components/Spinner/Spinner';
 import { useState } from 'react';
 import css from './ContactForm.module.css';
 import { Report } from 'notiflix/build/notiflix-report-aio';
-import { useCreateContactMutation, useFetchContactQuery } from 'redux/todos/contactApi';
+import { useCreateContactMutation, useFetchContactQuery } from 'redux/contacts/contactApi';
 
 export const ContactFormApi = () => {
   const [createContact, {isLoading}] = useCreateContactMutation();

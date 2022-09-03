@@ -1,12 +1,16 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import operations from "redux/auth/auth-operations";
-
+import { useSelector } from "react-redux";
+import { authSelectors } from "redux/auth";
+import { Title, Label, TitleInput, Input, Button,ButtonBox, Form } from './LoginPageStyle';
+// import { Formik, Form, ErrorMessage } from 'formik';
 
 export const LoginPage = () => { 
   const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
 
   const handleChange = ({ target: { name, value } }) => {
     switch (name) {
@@ -20,40 +24,42 @@ export const LoginPage = () => {
   };
 
   const handleSubmit = e => {
-    e.preventDefault();
-    dispatch(operations.logIn({ email, password }));
-    setEmail('');
-    setPassword('');
-  }
+    e.preventDefault();    
+     dispatch(operations.logIn({ email, password }));       
+  };
   
+  
+
   return (
     <div>
-      <h1>Страница регистрации</h1>
 
-      <form onSubmit={handleSubmit} style={styles.form} autoComplete="off">
+      <Form onSubmit={handleSubmit} >
+      <Title>Sing in</Title>
         
-        <label style={styles.label}>
-          Почта
-            <input
+        <Label >
+         <TitleInput>Your e-mail adress?</TitleInput>
+            <Input
                 type="email"
                 name="email"
                 value={email}
                 onChange={handleChange}
             />
-        </label>
+        </Label>
 
-        <label style={styles.label}>
-          Пароль
-            <input
+        <Label >
+          <TitleInput>Your password?</TitleInput>
+            <Input
                 type="password"
                 name="password"
                 value={password}
                 onChange={handleChange}
             />
-        </label>
-
-        <button type="submit">Зарегистрироваться</button>
-      </form>
+        </Label>
+        <ButtonBox>
+        <Button type="submit">Sing in</Button>
+        </ButtonBox>
+      </Form>
+      
     </div>
 )
 };
