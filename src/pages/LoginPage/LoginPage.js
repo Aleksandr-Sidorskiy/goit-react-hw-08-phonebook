@@ -1,16 +1,14 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import operations from "redux/auth/auth-operations";
-import { useSelector } from "react-redux";
-import { authSelectors } from "redux/auth";
 import { Title, Label, TitleInput, Input, Button,ButtonBox, Form } from './LoginPageStyle';
-// import { Formik, Form, ErrorMessage } from 'formik';
+
 
 export const LoginPage = () => { 
   const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
+ 
 
   const handleChange = ({ target: { name, value } }) => {
     switch (name) {
@@ -65,14 +63,3 @@ export const LoginPage = () => {
 };
 
 
-const styles = {
-  form: {
-    width: 320,
-    },
-    
-  label: {
-    display: 'flex',
-    flexDirection: 'column',
-    marginBottom: 15,
-  },
-};

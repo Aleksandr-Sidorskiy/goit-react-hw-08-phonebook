@@ -1,7 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 import authOperations from './auth-operations';
-// import storage from "redux-persist/lib/storage";
-// import { persistReducer } from "redux-persist";
 
 const initialState = {
     user: { name: null, email: null },

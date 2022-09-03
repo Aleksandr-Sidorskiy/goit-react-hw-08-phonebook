@@ -5,7 +5,6 @@ import AppBar from './AppBar/AppBar';
 import { Container } from './Header/header.styled';
 import { authOperations } from 'redux/auth';
 import { Spinner } from './Spinner/Spinner';
-// import { lazy } from 'react';
 import PrivatRoute from './PrivatRoute';
 import PublicRoute from './PublicRoute';
 import {authSelectors} from 'redux/auth';
@@ -15,11 +14,7 @@ import { RegisterPage } from 'pages/RegisterPage/RegisterPage';
 import { LoginPage } from 'pages/LoginPage/LoginPage';
 import { ContactsFilterPage } from 'pages/ContactsFilter/ContactsFilterPage';
 import { FormAddContactPage } from 'pages/FormAddContactPage/FormAddContactPage';
-// const HomePage = lazy(() => import('pages/HomePage'));
-// const RegisterPage = lazy(() => import('pages/RegisterPage'));
-// const LoginPage = lazy(() => import('pages/LoginPage'));
-// const ContactsFilterPage = lazy(() => import('pages/ContactsFilterPage'));
-// const FormAddContactPage = lazy(() => import('pages/FormAddContactPage'));
+
 
 
 
