@@ -14,6 +14,7 @@ import { RegisterPage } from 'pages/RegisterPage/RegisterPage';
 import { LoginPage } from 'pages/LoginPage/LoginPage';
 import { ContactsFilterPage } from 'pages/ContactsFilter/ContactsFilterPage';
 import { FormAddContactPage } from 'pages/FormAddContactPage/FormAddContactPage';
+import { NotFound } from 'pages';
 
 
 
@@ -38,7 +39,8 @@ const App = () => {
         <Route path='/register'  element={<PublicRoute  restricted > <RegisterPage /> </PublicRoute>} />
         <Route path='/login' element={<PublicRoute  restricted> <LoginPage /> </PublicRoute>} />
         <Route path='/form' element={ <PrivatRoute isLoggedIn={isLoggedIn}> <FormAddContactPage/> </PrivatRoute> } />
-        <Route path='/filter' element={<PrivatRoute isLoggedIn={isLoggedIn}> <ContactsFilterPage /> </PrivatRoute>}  />
+        <Route path='/filter' element={<PrivatRoute isLoggedIn={isLoggedIn}> <ContactsFilterPage /> </PrivatRoute>} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
         </>
           

@@ -25,10 +25,8 @@ export const RegisterPage = () => {
   const handleSubmit = e => {
     e.preventDefault();
     dispatch(operations.register({ name, email, password }));
-    setName('');
-    setEmail('');
-    setPassword('');
-  }
+  };
+  
     return (
     <div>
 
